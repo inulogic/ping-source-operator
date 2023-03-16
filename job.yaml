@@ -1,0 +1,23 @@
+apiVersion: com.inulogic/v1alpha1
+kind: PingSource
+metadata:
+  name: client
+  namespace: default
+spec:
+  schedule: "0/1 * * ? * * *"
+  sink: https://test
+  contentType: application/json
+  data: |
+    {}
+---
+apiVersion: com.inulogic/v1alpha1
+kind: PingSource
+metadata:
+  name: client2
+  namespace: default
+spec:
+  schedule: "0/1 * * ? * * *"
+  sink: other
+  contentType: application/json
+  data: |
+    {}

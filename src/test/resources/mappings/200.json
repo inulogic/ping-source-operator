@@ -1,0 +1,19 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/",
+        "bodyPatterns": [
+            {
+                "equalToJson": "{}"
+            }
+        ],
+        "headers": {
+            "Content-Type": {
+                "equalTo": "application/test"
+            }
+        }
+    },
+    "response": {
+        "status": 200
+    }
+}
