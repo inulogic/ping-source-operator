@@ -1,7 +1,7 @@
 package com.inulogic.dependents.outcomes;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.event.Observes;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.event.Observes;
 
 import org.quartz.SchedulerException;
 

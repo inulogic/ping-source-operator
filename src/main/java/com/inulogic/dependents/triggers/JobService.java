@@ -2,8 +2,8 @@ package com.inulogic.dependents.triggers;
 
 import java.util.Optional;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;

@@ -4,7 +4,7 @@ import static com.inulogic.quartz.TriggerKeyUtil.toResourceID;
 
 import java.util.Optional;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

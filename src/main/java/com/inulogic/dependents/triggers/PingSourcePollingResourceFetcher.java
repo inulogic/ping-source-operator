@@ -3,7 +3,7 @@ package com.inulogic.dependents.triggers;
 import java.util.Collections;
 import java.util.Set;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import org.quartz.TriggerKey;
 

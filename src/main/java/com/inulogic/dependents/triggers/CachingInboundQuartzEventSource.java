@@ -1,6 +1,6 @@
 package com.inulogic.dependents.triggers;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import com.inulogic.api.PingSource;
 import com.inulogic.quartz.PingSourceQuartz;
