@@ -14,8 +14,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.time.Duration;
 
-import jakarta.inject.Inject;
-
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.inulogic.api.PingSource;
 import com.inulogic.api.PingSourceSpec;
@@ -24,25 +22,20 @@ import org.junit.jupiter.api.Test;
 
 import io.fabric8.kubernetes.api.model.ObjectMetaBuilder;
 import io.fabric8.kubernetes.client.KubernetesClient;
-import io.javaoperatorsdk.operator.Operator;
+import io.quarkus.kubernetes.client.runtime.KubernetesClientUtils;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 @WithWiremock(name = "ping-source-requests", urlProperty = "mp.messaging.outgoing.ping-source-requests.url")
 class PingSourceOperatorE2ETest {
 
-    @Inject
-    Operator operator;
-
-    @Inject
-    KubernetesClient client;
+    protected final KubernetesClient client = KubernetesClientUtils.createClient();
 
     @Wiremock(name = "ping-source-requests")
     WireMockServer wireMockServer;
 
     @Test
     void canPingAndReportStatus() {
-        operator.start();
 
         var job = new PingSource();
         job.setMetadata(
@@ -58,7 +51,7 @@ class PingSourceOperatorE2ETest {
             }
         });
 
-        job = client.resource(job).createOrReplace();
+        job = client.resource(job).serverSideApply();
         try {
             awaitUntilCondition(job, "Ready", "True");
             await()
@@ -76,7 +69,6 @@ class PingSourceOperatorE2ETest {
 
     @Test
     void canReportPingFailure() {
-        operator.start();
 
         var job = new PingSource();
         job.setMetadata(
@@ -92,7 +84,7 @@ class PingSourceOperatorE2ETest {
             }
         });
 
-        job = client.resource(job).createOrReplace();
+        job = client.resource(job).serverSideApply();
 
         try {
             awaitUntilCondition(job, "Trigger", "False");
