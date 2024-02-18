@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.fabric8.kubernetes.api.model.Condition;
-import io.fabric8.kubernetes.model.annotation.PrinterColumn;
+import io.fabric8.crd.generator.annotation.PrinterColumn;
 import io.javaoperatorsdk.operator.api.ConditionsSetAware;
 import io.javaoperatorsdk.operator.api.ObservedGenerationAwareStatus;
 import lombok.Data;
